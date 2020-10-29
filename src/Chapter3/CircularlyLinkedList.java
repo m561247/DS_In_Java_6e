@@ -2,7 +2,7 @@ package Chapter3;
 
 
 public class CircularlyLinkedList<E> {
-	/**Node*/
+	
 	private static class Node<E>{
 		private E elemet;
 		private Node<E> next;
@@ -14,11 +14,11 @@ public class CircularlyLinkedList<E> {
 		public Node<E> getNext(){ return this.next; }
 		public void setNext(Node<E> n) { this.next = n; }
 	}
-	/**Node*/
+	
 	private Node<E> tail = null;
 	private int size = 0;
 	public CircularlyLinkedList() {};
-	//access method
+	// access method
 	public int size() {
 		return size;
 	}
@@ -37,7 +37,7 @@ public class CircularlyLinkedList<E> {
 		}
 		return tail.getElment();
 	}
-	//update method
+	// update method
 	public void rotate() {
 		if (tail != null) {
 			tail = tail.getNext();
@@ -71,6 +71,12 @@ public class CircularlyLinkedList<E> {
 		return head.getElment();
 	}
 	public static void main(String[] args) {
-		CircularlyLinkedList cl = new CircularlyLinkedList();
+		CircularlyLinkedList list = new CircularlyLinkedList();
+		list.addFirst(1);
+		list.addFirst(2);
+		list.addFirst(3);
+		list.addFirst(4);
+		list.addFirst(5);
+		list.addLast(6);
 	}
 }
