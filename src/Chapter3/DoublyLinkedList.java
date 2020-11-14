@@ -110,8 +110,4 @@ public class DoublyLinkedList<E> {
 		}
 		return remove(trailer.getPrev());
 	}
-
-	public static void main(String[] args) {
-
-	}
 }

@@ -36,5 +36,6 @@ public interface PositionalList<E> extends Iterable<E> {
 	int indexOf(Position<E> p);
 	
 	Position<E> findPosition(E e);
-
+	
+	Iterable<Position<E>> positions();
 }
