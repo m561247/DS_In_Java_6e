@@ -1,5 +1,6 @@
 package Chapter3;
 
+
 public class SinglyLinkedList<E> implements Cloneable {
 	private static class Node<E> {
 		private E elemet;
@@ -10,7 +11,7 @@ public class SinglyLinkedList<E> implements Cloneable {
 			this.next = next;
 		}
 
-		public E getElment() {
+		public E getElement() {
 			return this.elemet;
 		}
 
@@ -43,14 +44,14 @@ public class SinglyLinkedList<E> implements Cloneable {
 		if (isEmpty()) {
 			return null;
 		}
-		return head.getElment();
+		return head.getElement();
 	}
 
 	public E last() {
 		if (isEmpty()) {
 			return null;
 		}
-		return tail.getElment();
+		return tail.getElement();
 	}
 
 	// update methods
@@ -77,7 +78,7 @@ public class SinglyLinkedList<E> implements Cloneable {
 		if (isEmpty()) {
 			return null;
 		}
-		E answer = head.getElment();
+		E answer = head.getElement();
 		head = head.getNext();
 		size--;
 		if (size == 0) {
@@ -101,7 +102,7 @@ public class SinglyLinkedList<E> implements Cloneable {
 		Node<E> walkA = head;
 		Node<E> walkB = other.head;
 		while (walkA != null) {
-			if (!walkA.getElment().equals(walkB.getElment())) {
+			if (!walkA.getElement().equals(walkB.getElement())) {
 				return false;
 			}
 			walkA = walkA.getNext();
@@ -115,11 +116,11 @@ public class SinglyLinkedList<E> implements Cloneable {
 	public SinglyLinkedList<E> clone() throws CloneNotSupportedException {
 		SinglyLinkedList<E> other = (SinglyLinkedList) super.clone();
 		if (size > 0) {
-			other.head = new Node<>(head.getElment(), null);
+			other.head = new Node<>(head.getElement(), null);
 			Node<E> walk = head.getNext();
 			Node<E> otherTail = other.head;
 			while (walk != null) {
-				Node<E> newestNode = new Node<>(walk.getElment(), null);
+				Node<E> newestNode = new Node<>(walk.getElement(), null);
 				otherTail.setNext(newestNode);
 				otherTail = newestNode;
 				walk = walk.getNext();
@@ -161,14 +162,17 @@ public class SinglyLinkedList<E> implements Cloneable {
 		this.tail = head;
 		return this.head;
 	}
-
+	
+	public int hashCode() {
+	    int h = 0;
+	    for (Node walk = head; walk != null; walk = walk.getNext()) {
+	      h ^= walk.getElement().hashCode();      // bitwise exclusive-or with element's code
+	      h = (h << 5) | (h >>> 27);              // 5-bit cyclic shift of composite code
+	    }
+	    return h;
+	  }
+	
 	public static void main(String[] args) {
-		SinglyLinkedList sl = new SinglyLinkedList();
-		sl.addFirst(1);
-		sl.addFirst(1);
-		sl.addFirst(1);
-		sl.addFirst(1);
-		sl.reverse();
-
+		
 	}
 }
