@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.AbstractMap;
+import java.util.Map.Entry;
 public class HashMultimap<K, V> {
 	Map<K, List<V>> map = new HashMap<>(); // the primary map
 	int total = 0; // total number of entries in the multimap
@@ -55,6 +57,7 @@ public class HashMultimap<K, V> {
 				}
 			}
 		}
+		return wasRemoved;
 	}
 	
 	Iterable<V> removeAll(K key) {
